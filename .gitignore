@@ -1,0 +1,45 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+.idea/
+.gradle
+/*/out
+**/build/
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
+.DS_Store
+*.jks
+!rappi_debug.jks
+*.hprof
+*.log
+/PATH
+
+reports
+captures
+
+.idea/instapk.xml
+instapk.log*
+
+gradle.properties
