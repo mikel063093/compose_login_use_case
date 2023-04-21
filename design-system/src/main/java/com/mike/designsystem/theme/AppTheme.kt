@@ -2,11 +2,12 @@ package com.mike.designsystem.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 
-private val LightColors = lightColors(
+internal fun lightColors(isLight: Boolean) = BaupapColors(
     primary = md_theme_light_primary,
     onPrimary = md_theme_light_onPrimary,
     secondary = md_theme_light_secondary,
@@ -17,11 +18,16 @@ private val LightColors = lightColors(
     onBackground = md_theme_light_onBackground,
     surface = md_theme_light_surface,
     onSurface = md_theme_light_onSurface,
+    isLight = isLight,
+    primaryVariant = md_theme_light_primaryContainer,
+    secondaryVariant = md_theme_light_secondaryContainer
 )
 
-private val DarkColors = darkColors(
+internal fun darkColors(isLight: Boolean) = BaupapColors(
     primary = md_theme_dark_primary,
     onPrimary = md_theme_dark_onPrimary,
+    primaryVariant = md_theme_dark_primaryContainer,
+    secondaryVariant = md_theme_dark_secondaryContainer,
     secondary = md_theme_dark_secondary,
     onSecondary = md_theme_dark_onSecondary,
     error = md_theme_dark_error,
@@ -30,21 +36,59 @@ private val DarkColors = darkColors(
     onBackground = md_theme_dark_onBackground,
     surface = md_theme_dark_surface,
     onSurface = md_theme_dark_onSurface,
+    isLight = isLight
 )
 
+
 @Composable
-fun AppTheme(
+fun BaubapTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
     val colors = if (!useDarkTheme) {
-        LightColors
+        lightColors(true)
     } else {
-        DarkColors
+        darkColors(false)
+    }
+    ProvideBaubapResources(colors, baubapTypography, baubapShapes) {
+        MaterialTheme(
+            colors = debugColors(useDarkTheme, colors),
+            content = content,
+            typography = mdTypography,
+            shapes = shapes
+        )
     }
 
-    MaterialTheme(
-        colors = colors,
-        content = content
-    )
+}
+
+@Composable
+internal fun ProvideBaubapResources(
+    colors: BaupapColors,
+    typography: BaubapTypography,
+    shapes: BaubapShapes,
+    content: @Composable () -> Unit
+) {
+    val colorPalette = remember { colors }
+    CompositionLocalProvider(
+        LocalBaubapColors provides colorPalette,
+        LocalBaubapTypographies provides typography,
+        LocalBaubapShapes provides shapes
+    ) {
+        ProvideTextStyle(value = typography.text1, content = content)
+    }
+}
+
+
+object BaubapTheme {
+    val colors: BaupapColors
+        @Composable
+        get() = LocalBaubapColors.current
+
+    val typography: BaubapTypography
+        @Composable
+        get() = LocalBaubapTypographies.current
+
+    val shapes: BaubapShapes
+        @Composable
+        get() = LocalBaubapShapes.current
 }

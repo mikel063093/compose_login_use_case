@@ -14,6 +14,13 @@ android {
 }
 
 dependencies {
+    implementation project(":design-system")
+
     implementation(baubapLib.material)
 
+    implementation(baubapLib.compose.foundation)
+    implementation(baubapLib.compose.ui)
+    implementation(baubapLib.compose.ui.tooling)
+    implementation(baubapLib.compose.ui.tooling.preview)
+    implementation(baubapLib.compose.material)
 }
