@@ -1,0 +1,28 @@
+apply plugin:"io.gitlab.arturbosch.detekt"
+
+detekt {
+    autoCorrect = true
+    buildUponDefaultConfig = true
+    parallel = true
+    config = files("$rootDir/tools/lint/detekt.yml")
+    ignoreFailures = false
+}
+
+dependencies {
+    detekt(baubapLib.detekt.cli)
+    detektPlugins(baubapLib.detekt.formatting)
+    detektPlugins(baubapLib.detekt.compose)
+}
+
+tasks.named("detekt").configure {
+    reports {
+        xml {
+            required = true
+            outputLocation = file("build/reports/detekt/detekt.xml")
+        }
+        html.required = false
+        txt.required = false
+        sarif.required = false
+        md.required = false
+    }
+}

@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 private val LightColors = lightColors(
     primary = md_theme_light_primary,
     onPrimary = md_theme_light_onPrimary,
-
     secondary = md_theme_light_secondary,
     onSecondary = md_theme_light_onSecondary,
     error = md_theme_light_error,
@@ -18,9 +17,7 @@ private val LightColors = lightColors(
     onBackground = md_theme_light_onBackground,
     surface = md_theme_light_surface,
     onSurface = md_theme_light_onSurface,
-
-    )
-
+)
 
 private val DarkColors = darkColors(
     primary = md_theme_dark_primary,
@@ -33,8 +30,7 @@ private val DarkColors = darkColors(
     onBackground = md_theme_dark_onBackground,
     surface = md_theme_dark_surface,
     onSurface = md_theme_dark_onSurface,
-
-    )
+)
 
 @Composable
 fun AppTheme(

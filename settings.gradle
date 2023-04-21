@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("baubapLib") {
-            from(files("gradle/libs.versions.toml"))
+            from(files("tools/libs.versions.toml"))
         }
     }
 }

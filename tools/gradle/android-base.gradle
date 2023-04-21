@@ -1,9 +1,11 @@
+apply from: "$rootDir/tools/gradle/script-detekt.gradle"
+
 android {
-    compileSdk libs.versions.compileSdk.get().toInteger()
+    compileSdk baubapLib.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdk libs.versions.minSdk.get().toInteger()
-        targetSdk libs.versions.targetSdk.get().toInteger()
+        minSdk baubapLib.versions.minSdk.get().toInteger()
+        targetSdk baubapLib.versions.targetSdk.get().toInteger()
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true

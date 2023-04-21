@@ -1,4 +1,4 @@
-apply from: "$project.rootDir/gradle/android-library.gradle"
+apply from: "$project.rootDir/tools/gradle/android-library.gradle"
 apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
@@ -10,15 +10,15 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion libs.versions.composeCompiler.get()
+        kotlinCompilerExtensionVersion baubapLib.versions.composeCompiler.get()
     }
 }
 
 
 dependencies {
-    implementation(libs.compose.foundation)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material)
+    implementation(baubapLib.compose.foundation)
+    implementation(baubapLib.compose.ui)
+    implementation(baubapLib.compose.ui.tooling)
+    implementation(baubapLib.compose.ui.tooling.preview)
+    implementation(baubapLib.compose.material)
 }
