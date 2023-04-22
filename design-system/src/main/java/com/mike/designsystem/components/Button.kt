@@ -1,5 +1,7 @@
 package com.mike.designsystem.components
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -84,7 +86,7 @@ private class ButtonColorImpl(
 /**
  *The ButtonStyle interface represents a sealed interface for defining different styles for a button.
  *It provides a single method, getButtonColor(), which returns a ButtonColor object representing the color
- * scheme for the button style.
+ *scheme for the button style.
  */
 sealed interface ButtonStyle {
     /**
@@ -172,9 +174,22 @@ fun DSButton(
     }
 }
 
-@Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-private fun previewDsButton() {
+private fun previewDarkDsButton() {
+    BaubapTheme {
+        DSButton(
+            onClick = { /*TODO*/ },
+            text = "Login",
+            imageVector = User,
+            enabled = true
+        )
+    }
+}
+
+@Preview(uiMode = UI_MODE_NIGHT_NO)
+@Composable
+private fun previewLightDsButton() {
     BaubapTheme {
         DSButton(
             onClick = { /*TODO*/ },

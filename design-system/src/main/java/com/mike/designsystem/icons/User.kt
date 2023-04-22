@@ -1,4 +1,5 @@
 package com.mike.designsystem.icons
+
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
@@ -9,16 +10,27 @@ import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 
-public val User: ImageVector
+val User: ImageVector
     get() {
         if (_user != null) {
             return _user!!
         }
-        _user = Builder(name = "User", defaultWidth = 24.0.dp, defaultHeight = 24.0.dp,
-            viewportWidth = 24.0f, viewportHeight = 24.0f).apply {
-            path(fill = SolidColor(Color(0xFF000000)), stroke = null, strokeLineWidth = 0.0f,
-                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                pathFillType = NonZero) {
+        _user = Builder(
+            name = "User",
+            defaultWidth = 24.0.dp,
+            defaultHeight = 24.0.dp,
+            viewportWidth = 24.0f,
+            viewportHeight = 24.0f
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFF000000)),
+                stroke = null,
+                strokeLineWidth = 0.0f,
+                strokeLineCap = Butt,
+                strokeLineJoin = Miter,
+                strokeLineMiter = 4.0f,
+                pathFillType = NonZero
+            ) {
                 moveTo(4.0f, 23.0f)
                 curveTo(4.0f, 20.8783f, 4.8429f, 18.8434f, 6.3432f, 17.3431f)
                 curveTo(7.8434f, 15.8429f, 9.8783f, 15.0f, 12.0f, 15.0f)
@@ -44,8 +56,7 @@ public val User: ImageVector
                 curveTo(8.0f, 10.21f, 9.79f, 12.0f, 12.0f, 12.0f)
                 close()
             }
-        }
-            .build()
+        }.build()
         return _user!!
     }
 
