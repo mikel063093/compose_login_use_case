@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
 
 // Generate by https://m3.material.io/theme-builder#/custom
 class BaupapColors constructor(
@@ -22,6 +23,7 @@ class BaupapColors constructor(
     onBackground: Color,
     onSurface: Color,
     onError: Color,
+    outline: Color,
     isLight: Boolean
 ) {
     var primary by mutableStateOf(primary, structuralEqualityPolicy())
@@ -50,6 +52,8 @@ class BaupapColors constructor(
         internal set
     var isLight by mutableStateOf(isLight, structuralEqualityPolicy())
         internal set
+    var outline by mutableStateOf(outline, structuralEqualityPolicy())
+        internal set
 
     /**
      * Returns a copy of this Colors, optionally overriding some of the values.
@@ -67,6 +71,7 @@ class BaupapColors constructor(
         onBackground: Color = this.onBackground,
         onSurface: Color = this.onSurface,
         onError: Color = this.onError,
+        outline: Color = this.outline,
         isLight: Boolean = this.isLight
     ): Colors = Colors(
         primary,

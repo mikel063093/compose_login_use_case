@@ -30,6 +30,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mike.designsystem.icons.Icons
 import com.mike.designsystem.icons.User
 import com.mike.designsystem.theme.BaubapTheme
 
@@ -181,7 +182,7 @@ private fun previewDarkDsButton() {
         DSButton(
             onClick = { /*TODO*/ },
             text = "Login",
-            imageVector = User,
+            imageVector = Icons.User,
             enabled = true
         )
     }
@@ -194,7 +195,7 @@ private fun previewLightDsButton() {
         DSButton(
             onClick = { /*TODO*/ },
             text = "Login",
-            imageVector = User,
+            imageVector = Icons.User,
             enabled = true
         )
     }

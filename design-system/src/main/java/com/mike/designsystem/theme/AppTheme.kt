@@ -20,7 +20,8 @@ internal fun lightColors(isLight: Boolean) = BaupapColors(
     onSurface = md_theme_light_onSurface,
     isLight = isLight,
     primaryVariant = md_theme_light_primaryContainer,
-    secondaryVariant = md_theme_light_secondaryContainer
+    secondaryVariant = md_theme_light_secondaryContainer,
+    outline = md_theme_light_outline
 )
 
 internal fun darkColors(isLight: Boolean) = BaupapColors(
@@ -36,7 +37,8 @@ internal fun darkColors(isLight: Boolean) = BaupapColors(
     onBackground = md_theme_dark_onBackground,
     surface = md_theme_dark_surface,
     onSurface = md_theme_dark_onSurface,
-    isLight = isLight
+    isLight = isLight,
+    outline = md_theme_dark_outline
 )
 
 

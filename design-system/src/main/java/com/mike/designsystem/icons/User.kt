@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 
-val User: ImageVector
+val Icons.User: ImageVector
     get() {
         if (_user != null) {
             return _user!!
