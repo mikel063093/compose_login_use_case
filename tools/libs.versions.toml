@@ -3,7 +3,7 @@ androidxActivity = "1.5.1"
 androidxCamera = "1.2.1"
 androidxFragment = "1.5.3"
 androidxDataStore = "1.0.0"
-androidxLifecycle = "2.5.1"
+androidxLifecycle = "2.6.1"
 androidxNavigation = "2.5.3"
 androidxRoom = "2.4.3"
 androidxWindow = "1.0.0"
@@ -42,7 +42,7 @@ composeCompiler = "1.4.6"
 
 # Make sure these versions share the same Compose version
 compose = "1.4.2"
-accompanist = "0.28.0"
+accompanist = "0.30.0"
 paparazzi = "1.2.0"
 
 autoservice = "1.0.1"
@@ -370,3 +370,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.8.20" }
 detket = { id = "io.gitlab.arturbosch.detekt", version = "1.23.0-RC1" }
+hilt = { id = "com.google.dagger.hilt.android", version = '2.44'}

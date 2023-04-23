@@ -3,6 +3,7 @@ plugins {
     alias(baubapLib.plugins.android.application) apply false
     alias(baubapLib.plugins.android.library) apply false
     alias(baubapLib.plugins.kotlin.android) apply false
+    alias(baubapLib.plugins.hilt) apply false
     alias(baubapLib.plugins.detket)
 }
 

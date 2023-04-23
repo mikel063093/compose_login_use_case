@@ -1,7 +1,9 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply from: "$rootDir/tools/gradle/android-base.gradle"
-
+apply plugin: "kotlin-parcelize"
+apply plugin:'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     namespace 'com.mike.baubap'
@@ -10,6 +12,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion baubapLib.versions.composeCompiler.get()
     }
 }
 
@@ -23,4 +33,13 @@ dependencies {
     implementation(baubapLib.compose.ui.tooling)
     implementation(baubapLib.compose.ui.tooling.preview)
     implementation(baubapLib.compose.material)
+
+    implementation(baubapLib.androidx.activity.compose)
+    implementation(baubapLib.androidx.lifecycle.runtime.compose)
+    implementation(baubapLib.androidx.lifecycle.runtime.ktx)
+    implementation(baubapLib.androidx.viewmodel.ktx)
+
+    implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    kapt "com.google.dagger:hilt-compiler:2.44"
 }

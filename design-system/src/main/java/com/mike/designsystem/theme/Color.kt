@@ -71,7 +71,6 @@ class BaupapColors constructor(
         onBackground: Color = this.onBackground,
         onSurface: Color = this.onSurface,
         onError: Color = this.onError,
-        outline: Color = this.outline,
         isLight: Boolean = this.isLight
     ): Colors = Colors(
         primary,

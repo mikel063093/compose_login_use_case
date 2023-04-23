@@ -1,5 +1,6 @@
-apply from: "$project.rootDir/tools/gradle/android-library.gradle"
-apply plugin: 'org.jetbrains.kotlin.android'
+apply from:"$project.rootDir/tools/gradle/android-library.gradle"
+apply plugin:'org.jetbrains.kotlin.android'
+
 
 android {
     namespace 'com.mike.designsystem'
@@ -21,4 +22,7 @@ dependencies {
     implementation(baubapLib.compose.ui.tooling)
     implementation(baubapLib.compose.ui.tooling.preview)
     implementation(baubapLib.compose.material)
+    implementation(baubapLib.androidx.lifecycle.runtime.compose)
+    implementation(baubapLib.androidx.viewmodel.ktx)
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.1'
 }

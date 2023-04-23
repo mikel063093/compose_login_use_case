@@ -141,7 +141,7 @@ fun DSButton(
         onClick = onClick,
         modifier = modifier
             .semantics { role = Role.Button }
-            .height(32.dp)
+            .height(40.dp)
             .fillMaxWidth(),
         enabled = enabled,
         color = backgroundColor,
