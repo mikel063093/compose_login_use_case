@@ -3,35 +3,49 @@ package com.mike.baubap.ui
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mike.baubap.domain.InputValidationUseCase
+import com.mike.baubap.domain.InputWrapper
+import com.mike.baubap.domain.PasswordValidationUseCase
+import com.mike.baubap.domain.UserNameValidationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val handle: SavedStateHandle
+    private val timeMachine: SavedStateHandle,
+    private val validationUseCase: InputValidationUseCase,
+    private val userNameValidationUseCase: UserNameValidationUseCase,
+    private val passwordValidationUseCase: PasswordValidationUseCase,
 ) : ViewModel() {
-    val userName = handle.getStateFlow(NAME, InputWrapper())
-    val password = handle.getStateFlow(PASSWORD, InputWrapper())
 
-    val areInputsValid: StateFlow<Boolean> = combine(userName, password) { name, pass ->
-        name.value.isNotEmpty() && pass.value.isNotEmpty()
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(TIME_OUT),
-        initialValue = false
-    )
+    internal val userName: StateFlow<InputWrapper> = timeMachine.getStateFlow(NAME, InputWrapper())
+    internal val password: StateFlow<InputWrapper> =
+        timeMachine.getStateFlow(PASSWORD, InputWrapper())
 
-    fun updateName(input: String) {
-        handle[NAME] = userName.value.copy(value = input)
+    fun isValidUserName() = userNameValidationUseCase(userName).toStateFlow(true)
+
+    fun isValidPassword() = passwordValidationUseCase(password).toStateFlow(true)
+
+    fun areInputValid() = validationUseCase(userName, password).toStateFlow(false)
+
+    internal fun updateName(input: String) {
+        timeMachine[NAME] = userName.value.copy(value = input)
     }
 
-    fun updatePassword(input: String) {
-        handle[PASSWORD] = password.value.copy(value = input)
+    internal fun updatePassword(input: String) {
+        timeMachine[PASSWORD] = password.value.copy(value = input)
+    }
+
+    private fun <T> Flow<T>.toStateFlow(initialValue: T): StateFlow<T> {
+        return this.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(TIME_OUT),
+            initialValue = initialValue
+        )
     }
 
     private companion object {
@@ -39,5 +53,4 @@ class LoginViewModel @Inject constructor(
         const val PASSWORD = "pass"
         const val TIME_OUT = 5000L
     }
-
 }

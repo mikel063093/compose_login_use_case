@@ -46,13 +46,15 @@ sealed class InputType(
     val label: String,
     val icon: ImageVector,
     val keyboardOptions: KeyboardOptions,
-    val visualTransformation: VisualTransformation
+    val visualTransformation: VisualTransformation,
+    val errorMessage: String,
 ) {
     /**
      *Input type representing a username.
      */
     object Name : InputType(
         label = "Username",
+        errorMessage = "Invalid User name to short",
         icon = Icons.User,
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Next,
@@ -66,6 +68,7 @@ sealed class InputType(
      */
     object Password : InputType(
         label = "Password",
+        errorMessage = "Invalid Password to short",
         icon = Icons.Lock,
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,
@@ -83,44 +86,55 @@ sealed class InputType(
  *@param focusRequester The focus requester to be used with the input field, if any.
  */
 @Composable
+@Suppress("LongParameterList")
 fun DSTextInput(
     value: String,
     onValueChange: (value: String) -> Unit,
     inputType: InputType,
     focusRequester: FocusRequester? = null,
-    keyboardActions: KeyboardActions
+    keyboardActions: KeyboardActions,
+    showError: Boolean = false
 ) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        modifier = Modifier
-            .fillMaxWidth()
-            .focusRequester(focusRequester ?: FocusRequester()),
-        shape = BaubapTheme.shapes.radius200,
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = BaubapTheme.colors.background,
-            textColor = BaubapTheme.colors.onBackground,
-            placeholderColor = BaubapTheme.colors.primary,
-            focusedBorderColor = BaubapTheme.colors.primary,
-            unfocusedBorderColor = BaubapTheme.colors.outline,
-            focusedLabelColor = BaubapTheme.colors.primary,
-            unfocusedLabelColor = BaubapTheme.colors.secondary,
-        ),
-        textStyle = BaubapTheme.typography.text2,
-        singleLine = true,
-        keyboardOptions = inputType.keyboardOptions,
-        visualTransformation = inputType.visualTransformation,
-        keyboardActions = keyboardActions,
-        label = {
-            Text(text = inputType.label)
-        },
-        placeholder = {
-            Icon(
-                imageVector = inputType.icon,
-                null
+    Column {
+        OutlinedTextField(
+            isError = showError,
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier
+                .fillMaxWidth()
+                .focusRequester(focusRequester ?: FocusRequester()),
+            shape = BaubapTheme.shapes.radius200,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                backgroundColor = BaubapTheme.colors.background,
+                textColor = BaubapTheme.colors.onBackground,
+                placeholderColor = BaubapTheme.colors.primary,
+                focusedBorderColor = BaubapTheme.colors.primary,
+                unfocusedBorderColor = BaubapTheme.colors.outline,
+                focusedLabelColor = BaubapTheme.colors.primary,
+                unfocusedLabelColor = BaubapTheme.colors.secondary,
+            ),
+            textStyle = BaubapTheme.typography.text2,
+            singleLine = true,
+            keyboardOptions = inputType.keyboardOptions,
+            visualTransformation = inputType.visualTransformation,
+            keyboardActions = keyboardActions,
+            label = {
+                Text(text = inputType.label)
+            },
+            placeholder = {
+                Icon(
+                    imageVector = inputType.icon,
+                    null
+                )
+            }
+        )
+        if (showError) {
+            Text(
+                text = inputType.errorMessage,
+                color = BaubapTheme.colors.error,
             )
         }
-    )
+    }
 }
 
 

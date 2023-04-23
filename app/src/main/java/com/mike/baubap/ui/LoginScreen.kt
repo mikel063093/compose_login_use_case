@@ -35,9 +35,11 @@ fun LoginScreen(
     val passwordFocusRequester = FocusRequester()
     val focusManager = LocalFocusManager.current
 
-    val areInputsValid by loginViewModel.areInputsValid.collectAsStateWithLifecycle()
+    val areInputsValid by loginViewModel.areInputValid().collectAsStateWithLifecycle()
     val name by loginViewModel.userName.collectAsStateWithLifecycle()
     val pass by loginViewModel.password.collectAsStateWithLifecycle()
+    val isNameValid by loginViewModel.isValidUserName().collectAsStateWithLifecycle()
+    val isPasswordValid by loginViewModel.isValidPassword().collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -58,8 +60,9 @@ fun LoginScreen(
                     passwordFocusRequester.requestFocus()
                 }
             ),
-            value = name.value,
-            onValueChange = loginViewModel::updateName
+            value = name.value.orEmpty(),
+            onValueChange = loginViewModel::updateName,
+            showError = isNameValid.not()
         )
         DSTextInput(
             inputType = InputType.Password,
@@ -69,8 +72,9 @@ fun LoginScreen(
                 }
             ),
             focusRequester = passwordFocusRequester,
-            value = pass.value,
-            onValueChange = loginViewModel::updatePassword
+            value = pass.value.orEmpty(),
+            onValueChange = loginViewModel::updatePassword,
+            showError = isPasswordValid.not()
         )
         DSButton(
             onClick = {},
