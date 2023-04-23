@@ -24,5 +24,4 @@ dependencies {
     implementation(baubapLib.compose.material)
     implementation(baubapLib.androidx.lifecycle.runtime.compose)
     implementation(baubapLib.androidx.viewmodel.ktx)
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.1'
 }

@@ -58,7 +58,7 @@ fun LoginScreen(
                     passwordFocusRequester.requestFocus()
                 }
             ),
-            valueStateFlow = name.value,
+            value = name.value,
             onValueChange = loginViewModel::updateName
         )
         DSTextInput(
@@ -69,7 +69,7 @@ fun LoginScreen(
                 }
             ),
             focusRequester = passwordFocusRequester,
-            valueStateFlow = pass.value,
+            value = pass.value,
             onValueChange = loginViewModel::updatePassword
         )
         DSButton(

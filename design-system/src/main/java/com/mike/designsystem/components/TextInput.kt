@@ -15,7 +15,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -25,17 +27,13 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mike.designsystem.icons.Icons
 import com.mike.designsystem.icons.Lock
 import com.mike.designsystem.icons.User
 import com.mike.designsystem.theme.BaubapTheme
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 /**
  *Sealed class representing different input types.
@@ -78,22 +76,22 @@ sealed class InputType(
 }
 
 /**
- *Composable function for rendering a text input with the specified [InputType],
- *[focusRequester], and [keyboardActions].
- *@param inputType the input type for the text field
- *@param focusRequester the focus requester for the text field
- *@param keyboardActions the keyboard actions for the text field
+ *A composable that creates a custom text input field using OutlinedTextField with BaubapTheme styling.
+ *@param value The current text value of the input field.
+ *@param onValueChange The callback function to be invoked when the value of the input field changes.
+ *@param inputType The type of input to be entered, such as text or password.
+ *@param focusRequester The focus requester to be used with the input field, if any.
  */
 @Composable
 fun DSTextInput(
-    valueStateFlow: String,
+    value: String,
     onValueChange: (value: String) -> Unit,
     inputType: InputType,
     focusRequester: FocusRequester? = null,
     keyboardActions: KeyboardActions
 ) {
     OutlinedTextField(
-        value = valueStateFlow,
+        value = value,
         onValueChange = onValueChange,
         modifier = Modifier
             .fillMaxWidth()
@@ -126,17 +124,14 @@ fun DSTextInput(
 }
 
 
-/*
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun PreviewDarkTextInput() {
     BaubapTheme {
         val passwordFocusRequester = FocusRequester()
         val focusManager = LocalFocusManager.current
-        val valueName = remember {
-            MutableStateFlow(TextFieldValue(""))
-        }
-        val valuePassword = remember { MutableStateFlow(TextFieldValue("")) }
+        var valueName by remember { mutableStateOf("") }
+        var valuePassword by remember { mutableStateOf("") }
         Column(
             Modifier
                 .padding(24.dp)
@@ -151,9 +146,9 @@ private fun PreviewDarkTextInput() {
                 keyboardActions = KeyboardActions(onNext = {
                     passwordFocusRequester.requestFocus()
                 }),
-                valueStateFlow = valueName,
+                value = valueName,
                 onValueChange = { value ->
-                    valueName.value = value
+                    valueName = value
                 }
             )
             DSTextInput(
@@ -162,9 +157,9 @@ private fun PreviewDarkTextInput() {
                     focusManager.clearFocus()
                 }),
                 focusRequester = passwordFocusRequester,
-                valueStateFlow = valuePassword,
+                value = valuePassword,
                 onValueChange = { valueName ->
-                    valuePassword.value = valueName
+                    valuePassword = valueName
                 }
             )
         }
@@ -177,8 +172,8 @@ private fun PreviewLightTextInput() {
     BaubapTheme {
         val passwordFocusRequester = FocusRequester()
         val focusManager = LocalFocusManager.current
-        val valueName = remember { MutableStateFlow(TextFieldValue("")) }
-        val valuePassword = remember { MutableStateFlow(TextFieldValue("")) }
+        var valueName by remember { mutableStateOf("") }
+        var valuePassword by remember { mutableStateOf("") }
         Column(
             Modifier
                 .padding(24.dp)
@@ -192,9 +187,9 @@ private fun PreviewLightTextInput() {
                 keyboardActions = KeyboardActions(onNext = {
                     passwordFocusRequester.requestFocus()
                 }),
-                valueStateFlow = valueName,
+                value = valueName,
                 onValueChange = { value ->
-                    valueName.value = value
+                    valueName = value
                 }
             )
             DSTextInput(
@@ -203,12 +198,12 @@ private fun PreviewLightTextInput() {
                     focusManager.clearFocus()
                 }),
                 focusRequester = passwordFocusRequester,
-                valueStateFlow = valuePassword,
+                value = valuePassword,
                 onValueChange = { valueName ->
-                    valuePassword.value = valueName
+                    valuePassword = valueName
                 }
             )
         }
     }
 }
-*/
+
