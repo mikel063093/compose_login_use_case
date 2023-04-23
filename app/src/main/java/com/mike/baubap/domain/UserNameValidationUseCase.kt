@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 class UserNameValidationUseCase @Inject constructor(
     private val repository: ValidationRepository
 ) {
-    operator fun invoke(userName: StateFlow<InputWrapper>): Flow<Boolean> {
+    operator fun invoke(userName: StateFlow<Input>): Flow<Boolean> {
         return userName.map { user ->
             user.isInitialValue() || repository.isUserNameValid(user.value)
         }

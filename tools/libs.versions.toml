@@ -51,7 +51,7 @@ coroutines = "1.6.4"
 serialization = "1.4.1"
 androidxTestEspresso = "3.5.1"
 androidxTest = "1.5.0"
-mockk = "1.13.3"
+mockk = "1.13.5"
 mockito = "4.11.0"
 
 [libraries]
@@ -128,13 +128,14 @@ assertj-core = "org.assertj:assertj-core:3.24.2"
 hamcrest = "org.hamcrest:java-hamcrest:2.0.0.0"
 robolectric = "org.robolectric:robolectric:4.9.2"
 testParameterInjector = "com.google.testparameterinjector:test-parameter-injector:1.10"
-turbine = "app.cash.turbine:turbine:0.12.1"
+turbine = "app.cash.turbine:turbine:0.12.3"
 paparazzi = { module = "app.cash.paparazzi:paparazzi", version.ref = "paparazzi" }
 mockk-core = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
 mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:4.1.0"
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout", version.ref = "compose" }

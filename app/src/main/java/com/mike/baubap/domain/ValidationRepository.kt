@@ -19,5 +19,4 @@ class ValidationRepositoryImpl @Inject constructor() : ValidationRepository {
     private companion object {
         const val MINIMUM_LENGTH = 4
     }
-
 }

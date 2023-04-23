@@ -42,4 +42,13 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.45"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
     kapt "com.google.dagger:hilt-compiler:2.45"
+
+    testImplementation(baubapLib.junit)
+    testImplementation(baubapLib.mockk)
+    testImplementation(baubapLib.mockito.core)
+    testImplementation(baubapLib.mockito.kotlin)
+    testImplementation(baubapLib.androidx.core.testing)
+    testImplementation(baubapLib.robolectric)
+    testImplementation(baubapLib.kotlin.coroutines.test)
+    testImplementation(baubapLib.turbine)
 }

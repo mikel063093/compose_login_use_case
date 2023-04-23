@@ -9,15 +9,13 @@ class InputValidationUseCase @Inject constructor(
     private val repository: ValidationRepository
 ) {
     operator fun invoke(
-        userName: StateFlow<InputWrapper>,
-        password: StateFlow<InputWrapper>
+        userName: StateFlow<Input>,
+        password: StateFlow<Input>
     ): Flow<Boolean> {
         return combine(userName, password) { name, pass ->
             name.isInitialValue().not() && pass.isInitialValue().not() &&
-                    repository.isUserNameValid(name.value) &&
-                    repository.isPasswordValid(pass.value)
+            repository.isUserNameValid(name.value) &&
+            repository.isPasswordValid(pass.value)
         }
     }
-
-    private fun InputWrapper.isInitialValue() = value == null
 }

@@ -4,8 +4,8 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class InputWrapper(
+data class Input(
     val value: String? = null
 ) : Parcelable
 
-internal fun InputWrapper.isInitialValue() = value == null
+internal fun Input.isInitialValue() = value == null

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 class PasswordValidationUseCase @Inject constructor(
     private val repository: ValidationRepository
 ) {
-    operator fun invoke(password: StateFlow<InputWrapper>): Flow<Boolean> {
+    operator fun invoke(password: StateFlow<Input>): Flow<Boolean> {
         return password.map { pass ->
             pass.isInitialValue() || repository.isPasswordValid(pass.value)
         }

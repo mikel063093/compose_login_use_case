@@ -1,4 +1,4 @@
-package com.mike.baubap.ui
+package com.mike.baubap.presentation
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.ui.Modifier
+import com.mike.baubap.presentation.login.LoginScreen
 import com.mike.designsystem.theme.BaubapTheme
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,4 +1,4 @@
-package com.mike.baubap.ui
+package com.mike.baubap.presentation.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
