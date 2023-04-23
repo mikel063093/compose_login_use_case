@@ -1,9 +1,9 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply from: "$rootDir/tools/gradle/android-base.gradle"
-apply plugin: "kotlin-parcelize"
+apply plugin:"com.android.application"
+apply plugin:"kotlin-android"
+apply from:"$rootDir/tools/gradle/android-base.gradle"
+apply plugin:"kotlin-parcelize"
 apply plugin:'kotlin-kapt'
-apply plugin: 'com.google.dagger.hilt.android'
+apply plugin:'com.google.dagger.hilt.android'
 
 android {
     namespace 'com.mike.baubap'
@@ -39,9 +39,9 @@ dependencies {
     implementation(baubapLib.androidx.lifecycle.runtime.ktx)
     implementation(baubapLib.androidx.viewmodel.ktx)
 
-    implementation "com.google.dagger:hilt-android:2.45"
+    implementation(baubapLib.dagger.hilt)
+    kapt(baubapLib.dagger.hilt.compiler)
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-    kapt "com.google.dagger:hilt-compiler:2.45"
 
     testImplementation(baubapLib.junit)
     testImplementation(baubapLib.mockk)

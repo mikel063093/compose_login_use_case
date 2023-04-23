@@ -146,7 +146,6 @@ class LoginViewModelTest {
         turbine.cancelAndIgnoreRemainingEvents()
     }
 
-
     @Test
     fun `Are InputValid should return True When inputs are valid`() = runTest {
         // Given
