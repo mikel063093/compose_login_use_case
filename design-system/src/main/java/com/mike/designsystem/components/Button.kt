@@ -132,7 +132,7 @@ fun DSButton(
     buttonStyle: ButtonStyle = ButtonStyle.ButtonPrimary,
     enabled: Boolean = true,
     text: String,
-    imageVector: ImageVector
+    imageVector: ImageVector? = null
 ) {
     val contentColor by buttonStyle.getButtonColor().contentColor(enabled)
     val backgroundColor by buttonStyle.getButtonColor().backgroundColor(enabled)
@@ -158,12 +158,14 @@ fun DSButton(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
             content = {
-                Icon(
-                    modifier = Modifier.size(size = 16.dp),
-                    imageVector = imageVector,
-                    contentDescription = null,
-                    tint = contentColor
-                )
+                imageVector?.let {
+                    Icon(
+                        modifier = Modifier.size(size = 16.dp),
+                        imageVector = imageVector,
+                        contentDescription = null,
+                        tint = contentColor
+                    )
+                }
                 Spacer(modifier = Modifier.size(size = 8.dp))
                 Text(
                     text = text,

@@ -5,6 +5,7 @@ plugins {
     alias(baubapLib.plugins.kotlin.android) apply false
     alias(baubapLib.plugins.hilt) apply false
     alias(baubapLib.plugins.detket)
+    alias(baubapLib.plugins.paparazzi) apply false
 }
 
 task clean(type: Delete) {

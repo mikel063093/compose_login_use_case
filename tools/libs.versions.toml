@@ -18,7 +18,7 @@ kotlin = "1.8.0"
 composeCompiler = "1.4.6"
 
 # Make sure these versions share the same Compose version
-compose = "1.4.2"
+compose = "1.2.0"
 paparazzi = "1.2.0"
 coroutines = "1.6.4"
 serialization = "1.4.1"
@@ -27,10 +27,10 @@ mockk = "1.13.5"
 mockito = "4.11.0"
 
 [libraries]
-dagger-hilt = { module = "com.google.dagger:hilt-android" , version.ref = "hilt"}
-dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt"}
-
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 androidx-compose-hilt-navigation = "androidx.hilt:hilt-navigation-compose:1.0.0"
+
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidxActivity" }
 androidx-appcompat = "androidx.appcompat:appcompat:1.4.2"
@@ -52,7 +52,6 @@ junit = "junit:junit:4.13.2"
 assertj-core = "org.assertj:assertj-core:3.24.2"
 hamcrest = "org.hamcrest:java-hamcrest:2.0.0.0"
 robolectric = "org.robolectric:robolectric:4.9.2"
-testParameterInjector = "com.google.testparameterinjector:test-parameter-injector:1.10"
 turbine = "app.cash.turbine:turbine:0.12.3"
 paparazzi = { module = "app.cash.paparazzi:paparazzi", version.ref = "paparazzi" }
 mockk-core = { module = "io.mockk:mockk", version.ref = "mockk" }
@@ -89,7 +88,7 @@ kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlin-coroutines-rx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-
+testParameterInjector = { module = "com.google.testparameterinjector:test-parameter-injector", version = "1.10" }
 
 # Plugins
 plugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -104,4 +103,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.8.20" }
 detket = { id = "io.gitlab.arturbosch.detekt", version = "1.23.0-RC1" }
-hilt = { id = "com.google.dagger.hilt.android", version = '2.44'}
+hilt = { id = "com.google.dagger.hilt.android", version = '2.44' }
+paparazzi = { id = "app.cash.paparazzi", version = '1.2.0' }

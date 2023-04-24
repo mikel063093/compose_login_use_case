@@ -41,7 +41,7 @@ dependencies {
 
     implementation(baubapLib.dagger.hilt)
     kapt(baubapLib.dagger.hilt.compiler)
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation(baubapLib.androidx.compose.hilt.navigation)
 
     testImplementation(baubapLib.junit)
     testImplementation(baubapLib.mockk)

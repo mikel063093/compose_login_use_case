@@ -1,6 +1,6 @@
 apply from:"$project.rootDir/tools/gradle/android-library.gradle"
 apply plugin:'org.jetbrains.kotlin.android'
-
+apply plugin: 'app.cash.paparazzi'
 
 android {
     namespace 'com.mike.designsystem'
@@ -15,7 +15,6 @@ android {
     }
 }
 
-
 dependencies {
     implementation(baubapLib.compose.foundation)
     implementation(baubapLib.compose.ui)
@@ -24,4 +23,5 @@ dependencies {
     implementation(baubapLib.compose.material)
     implementation(baubapLib.androidx.lifecycle.runtime.compose)
     implementation(baubapLib.androidx.viewmodel.ktx)
+    implementation(baubapLib.testParameterInjector)
 }
