@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.ui.Modifier
-import com.mike.baubap.presentation.login.LoginScreen
+import androidx.navigation.compose.rememberNavController
+import com.mike.baubap.presentation.navigation.NavGraph
 import com.mike.designsystem.theme.BaubapTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
                         .background(BaubapTheme.colors.background)
                 ) {
                     Box(Modifier.imePadding()) {
-                        LoginScreen()
+                        val navController = rememberNavController()
+                        NavGraph(navController)
                     }
                 }
             }

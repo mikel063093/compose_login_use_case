@@ -30,7 +30,8 @@ import com.mike.designsystem.theme.BaubapTheme
 
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel = hiltViewModel()
+    loginViewModel: LoginViewModel = hiltViewModel(),
+    navigateToHome: (userName: String) -> Unit = {}
 ) {
     val passwordFocusRequester = FocusRequester()
     val focusManager = LocalFocusManager.current
@@ -77,7 +78,7 @@ fun LoginScreen(
             showError = isPasswordValid.not()
         )
         DSButton(
-            onClick = {},
+            onClick = { navigateToHome.invoke(loginViewModel.userName.value.value.orEmpty()) },
             buttonStyle = ButtonStyle.ButtonPrimary,
             text = "Login",
             enabled = areInputsValid,

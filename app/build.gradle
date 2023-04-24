@@ -35,6 +35,7 @@ dependencies {
     implementation(baubapLib.compose.material)
 
     implementation(baubapLib.androidx.activity.compose)
+    implementation(baubapLib.androidx.navigation.compose)
     implementation(baubapLib.androidx.lifecycle.runtime.compose)
     implementation(baubapLib.androidx.lifecycle.runtime.ktx)
     implementation(baubapLib.androidx.viewmodel.ktx)
