@@ -39,6 +39,6 @@ fun HomeScreen(
             color = BaubapTheme.colors.onBackground
         )
         Spacer(modifier = Modifier.size(32.dp))
-        DSButton(onClick = popUpToLogin, text = "Go back")
+        DSButton(onClick = popUpToLogin, text = { "Go back" })
     }
 }

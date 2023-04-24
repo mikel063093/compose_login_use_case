@@ -61,7 +61,7 @@ fun LoginScreen(
                     passwordFocusRequester.requestFocus()
                 }
             ),
-            value = name.value.orEmpty(),
+            value ={name.value.orEmpty()} ,
             onValueChange = loginViewModel::updateName,
             showError = isNameValid.not()
         )
@@ -73,14 +73,14 @@ fun LoginScreen(
                 }
             ),
             focusRequester = passwordFocusRequester,
-            value = pass.value.orEmpty(),
+            value = { pass.value.orEmpty() },
             onValueChange = loginViewModel::updatePassword,
             showError = isPasswordValid.not()
         )
         DSButton(
             onClick = { navigateToHome.invoke(loginViewModel.userName.value.value.orEmpty()) },
             buttonStyle = ButtonStyle.ButtonPrimary,
-            text = "Login",
+            text = { "Login" },
             enabled = areInputsValid,
             imageVector = Icons.User
         )

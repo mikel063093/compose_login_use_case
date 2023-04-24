@@ -34,7 +34,7 @@ class ButtonTest {
                     ) {
                         DSButton(
                             onClick = { /*TODO*/ },
-                            text = "Login",
+                            text = { "Login" },
                             enabled = true
                         )
                     }

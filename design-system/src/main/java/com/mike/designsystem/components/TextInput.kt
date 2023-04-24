@@ -88,7 +88,7 @@ sealed class InputType(
 @Composable
 @Suppress("LongParameterList")
 fun DSTextInput(
-    value: String,
+    value: () -> String,
     onValueChange: (value: String) -> Unit,
     inputType: InputType,
     focusRequester: FocusRequester? = null,
@@ -98,7 +98,7 @@ fun DSTextInput(
     Column {
         OutlinedTextField(
             isError = showError,
-            value = value,
+            value = value.invoke(),
             onValueChange = onValueChange,
             modifier = Modifier
                 .fillMaxWidth()
@@ -160,7 +160,7 @@ private fun PreviewDarkTextInput() {
                 keyboardActions = KeyboardActions(onNext = {
                     passwordFocusRequester.requestFocus()
                 }),
-                value = valueName,
+                value = {valueName},
                 onValueChange = { value ->
                     valueName = value
                 }
@@ -171,7 +171,7 @@ private fun PreviewDarkTextInput() {
                     focusManager.clearFocus()
                 }),
                 focusRequester = passwordFocusRequester,
-                value = valuePassword,
+                value = { valuePassword },
                 onValueChange = { valueName ->
                     valuePassword = valueName
                 }
@@ -201,7 +201,7 @@ private fun PreviewLightTextInput() {
                 keyboardActions = KeyboardActions(onNext = {
                     passwordFocusRequester.requestFocus()
                 }),
-                value = valueName,
+                value = { valueName },
                 onValueChange = { value ->
                     valueName = value
                 }
@@ -212,7 +212,7 @@ private fun PreviewLightTextInput() {
                     focusManager.clearFocus()
                 }),
                 focusRequester = passwordFocusRequester,
-                value = valuePassword,
+                value = { valuePassword },
                 onValueChange = { valueName ->
                     valuePassword = valueName
                 }

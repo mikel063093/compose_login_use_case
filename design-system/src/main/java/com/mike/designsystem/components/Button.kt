@@ -131,7 +131,7 @@ fun DSButton(
     modifier: Modifier = Modifier,
     buttonStyle: ButtonStyle = ButtonStyle.ButtonPrimary,
     enabled: Boolean = true,
-    text: String,
+    text: () -> String,
     imageVector: ImageVector? = null
 ) {
     val contentColor by buttonStyle.getButtonColor().contentColor(enabled)
@@ -168,7 +168,7 @@ fun DSButton(
                 }
                 Spacer(modifier = Modifier.size(size = 8.dp))
                 Text(
-                    text = text,
+                    text = text.invoke(),
                     fontStyle = BaubapTheme.typography.body2.fontStyle,
                     color = contentColor
                 )
@@ -183,7 +183,7 @@ private fun previewDarkDsButton() {
     BaubapTheme {
         DSButton(
             onClick = { /*TODO*/ },
-            text = "Login",
+            text = { "Login" },
             imageVector = Icons.User,
             enabled = true
         )
@@ -196,7 +196,7 @@ private fun previewLightDsButton() {
     BaubapTheme {
         DSButton(
             onClick = { /*TODO*/ },
-            text = "Login",
+            text = { "Login" },
             imageVector = Icons.User,
             enabled = true
         )
