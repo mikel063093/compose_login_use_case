@@ -623,7 +623,7 @@ style:
 TwitterCompose:
   CompositionLocalAllowlist:
     active: true
-    allowedCompositionLocals: LocalRappiColors, LocalRappiTypography, LocalRappiDimensions, LocalCameraPositionState
+    allowedCompositionLocals: LocalColors, LocalTypography, LocalDimensions, LocalCameraPositionState
   CompositionLocalNaming:
     active: true
   ContentEmitterReturningValues:

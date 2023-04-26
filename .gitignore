@@ -31,7 +31,6 @@ local.properties
 *.swp
 .DS_Store
 *.jks
-!rappi_debug.jks
 *.hprof
 *.log
 /PATH
